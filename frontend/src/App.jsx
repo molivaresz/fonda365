@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { useState } from 'react';
 import Nbmenu from './components/nbmenu';
 import Home from './views/home';
+import Fonda365ContextProvider from './context/Fonda365ContextProvider';
 
 
 
@@ -13,11 +14,12 @@ function App() {
 
   return (
     <>
-      <Nbmenu />
-      <Routes>
-        <Route path="/" element={<Home />}/>
-      </Routes>
-
+      <Fonda365ContextProvider>
+        <Nbmenu />
+        <Routes>
+          <Route path="/" element={<Home />}/>
+        </Routes>
+      </Fonda365ContextProvider>
     </>
   )
 }
