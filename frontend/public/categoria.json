@@ -1,0 +1,22 @@
+[
+    {
+        "id_categoria": 1,
+        "categoria": "Cerveza"
+    },
+    {
+        "id_categoria": 2,
+        "categoria": "Whisky"
+    },
+    {
+        "id_categoria": 3,
+        "categoria": "Ron"
+    },
+    {
+        "id_categoria": 4,
+        "categoria": "Vino"
+    },
+    {
+        "id_categoria": 5,
+        "categoria": "Tequila"
+    }
+]

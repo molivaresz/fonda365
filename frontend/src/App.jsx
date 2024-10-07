@@ -5,8 +5,7 @@ import { useState } from 'react';
 import Nbmenu from './components/nbmenu';
 import Home from './views/home';
 import Fonda365ContextProvider from './context/Fonda365ContextProvider';
-
-
+import DetalleProducto from './views/DetalleProducto';
 
 
 function App() {
@@ -18,6 +17,7 @@ function App() {
         <Nbmenu />
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/DetalleProducto/:id" element={<DetalleProducto />}/>
         </Routes>
       </Fonda365ContextProvider>
     </>

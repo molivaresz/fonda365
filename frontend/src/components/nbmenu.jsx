@@ -1,12 +1,17 @@
 import React from 'react'
+import { useContext } from 'react';
+import { Fonda365Context } from '../context/Fonda365ContextProvider';
 
 const Nbmenu = () => {
+
+    const {dataCategoria} = useContext(Fonda365Context)
+
     return (
         <div>
             <nav className="navbar">
                 <div className="container-fluid d-flex justify-content-around">
                     <a className="navbar-brand" href="#">
-                        <img src="src\assets\logofonda365.png" alt="Logo" width="100" height="52" className="d-inline-block align-text-top" />
+                        <img src="src\assets\logofonda365.png" alt="Logo" width="200" height="104" className="d-inline-block align-text-top" />
                     </a>
                     <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Producto" aria-label="Search" />
@@ -18,13 +23,13 @@ const Nbmenu = () => {
                 </div>
                 <div className="container-fluid d-flex justify-content-center">
                     <div className="btn-group" role="group" aria-label="Default button group">
-                        <button type="button" className="btn btn-outline-dark">Cerveza</button>
-                        <button type="button" className="btn btn-outline-dark">Whisky</button>
-                        <button type="button" className="btn btn-outline-dark">Ron</button>
-                        <button type="button" className="btn btn-outline-dark">Vino</button>
-                        <button type="button" className="btn btn-outline-dark">Tequila</button>
-                        <button type="button" className="btn btn-outline-dark">Pisco</button>
-                        <button type="button" className="btn btn-outline-dark">Espumante</button>
+
+                        {
+                            dataCategoria  &&
+                            dataCategoria.map((dataCatego,index) => (
+                                <button key={index} type="button" className="btn btn-outline-dark">{dataCatego.categoria}</button>
+                            ))
+                        }
                     </div>
                 </div>
             </nav>

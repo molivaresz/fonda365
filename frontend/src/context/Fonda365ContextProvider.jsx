@@ -3,11 +3,11 @@ import { createContext, useEffect, useState} from "react";
 export const Fonda365Context = createContext();
 
 const PRODUCTOS_URL = "/productos.json";
-const PRODUCTOSBANNER_URL = "/productosbanner.json";
+const CATEGORIA_URL = "/categoria.json";
 
 const Fonda365ContextProvider = ({ children }) => {
     const [dataProducto, setDataProducto] = useState([])
-    const [dataProductoBanner, setDataProductoBanner] = useState([])
+    const [dataCategoria, setDataCategoria] = useState([])
 //    const [carro, setCarro] = useState([])
     
 
@@ -22,24 +22,26 @@ const Fonda365ContextProvider = ({ children }) => {
         }
     };
 
-    const getProductosBanner = async () => {
+    const getCategorias = async () => {
         try {
-            const response = await fetch(PRODUCTOSBANNER_URL);
-            const dataProductosbanner = await response.json();
+            const response = await fetch(CATEGORIA_URL);
+            const dataCategorias = await response.json();
 
-            setDataProductoBanner(dataProductosbanner)
+            setDataCategoria(dataCategorias)
         } catch (error) {
             console.log(error);
         }
     };
 
+
+
     useEffect(() => {
         getProductos()
-        getProductosBanner()
+        getCategorias()
     }, [])
 
     return (
-        <Fonda365Context.Provider value={{dataProducto, setDataProducto, dataProductoBanner, setDataProductoBanner}}>
+        <Fonda365Context.Provider value={{dataProducto, setDataProducto, dataCategoria, setDataCategoria}}>
             {children}
         </Fonda365Context.Provider>
     );
