@@ -16,7 +16,7 @@ const CardProducto = (props) => {
     return (
         <>
         <Card key={"c" + props.dproducto.id_producto}>
-            <Card.Img key={"ci" + props.dproducto.id_producto} variant="top" src={props.dproducto.img} />
+            <Card.Img className='imgcard' key={"ci" + props.dproducto.id_producto} variant="top" src={props.dproducto.img} />
             <Card.Body key={"cb" + props.dproducto.id_producto}>
                 <Card.Title className='border-bottom border-secondary' key={"ct" + props.dproducto.id_producto}>{props.dproducto.nombre_producto}</Card.Title>
                 <div className='text-center'>

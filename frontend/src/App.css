@@ -5,7 +5,7 @@
 }
 
 .navbar {
-    background: #c2c2c2;
+    background: #b99c9c;
     padding: 20px;
 }
 
@@ -17,4 +17,19 @@
 .carousel {
     width: 400px;
     height: 300px;
+}
+
+.galeriahome {
+    padding-top: 7em;
+}
+
+.imgcard {
+    width: 400px;
+    height: 400px;
+    padding: 1em;
+}
+
+footer {
+    background: #b99c9c;
+    padding: 20px;
 }

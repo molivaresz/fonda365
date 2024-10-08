@@ -1,9 +1,6 @@
 import React from 'react'
 import { useContext } from "react";
 import { Fonda365Context } from '../context/Fonda365ContextProvider';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import CardProducto from '../components/CardProducto';
 import Banner from '../components/Banner';
 
@@ -15,16 +12,16 @@ const Home = () => {
   return (
     <>
     <Banner/>
-    <Container fluid>
-    <Row>
+    <div class="galeriahome container-fluid">
+    <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
     {
       dataProducto && 
       dataProducto.map((dataProd,index) => (
-        index <= 7 ? <Col key={index} xs={12} md={3}><CardProducto dproducto={dataProd} /></Col> : null
+        index <= 7 ? <div class="col" key={index} xs={12} md={3}><CardProducto dproducto={dataProd} /></div> : null
       ))
     }
-    </Row>
-    </Container>
+    </div>
+    </div>
     </>
   )
 }
