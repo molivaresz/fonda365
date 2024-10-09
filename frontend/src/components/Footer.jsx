@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -13,27 +14,27 @@ const Footer = () => {
             <div className="col mb-1">
                 <h5>Donde Fonda365</h5>
                 <ul class="nav flex-column">
-                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Inicio</a></li>
-                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Quienes Somos</a></li>
+                    <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/">Inicio</Link></li>
+                    <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/quienesSomos">Quienes Somos</Link></li>
                     <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Mi Cuenta</a></li>
-                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Contacto</a></li>
+                    <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/contacto">Contacto</Link></li>
                 </ul>
             </div>
 
             <div class="col mb-1">
                 <h5>Servicio al Cliente</h5>
                 <ul class="nav flex-column">
-                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Terminos y Condiciones</a></li>
-                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Preguntas Frecuentes</a></li>
-                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Información Despachos</a></li>
+                    <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/terminosCondiciones">Terminos y Condiciones</Link></li>
+                    <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/preguntasFrecuentes">Preguntas Frecuentes</Link></li>
+                    <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/informacionDespacho">Información Despachos</Link></li>
                 </ul>
             </div>
 
             <div className="col mb-1">
                 <h5>Contacto</h5>
                 <ul className="nav flex-column">
-                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">+56 9 9999 9999</a></li>
-                    <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Contacto@fonda365.com</a></li>
+                    <li className="nav-item mb-2">+56 9 9999 9999</li>
+                    <li className="nav-item mb-2">Contacto@fonda365.com</li>
                 </ul>
             </div>
         </footer>
