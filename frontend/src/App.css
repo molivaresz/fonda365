@@ -28,7 +28,9 @@
     height: 400px;
     padding: 1em;
 }
-
+.quienesSomos {
+    text-align: center;
+}
 footer {
     background: #b99c9c;
     padding: 20px;
