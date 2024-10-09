@@ -3,9 +3,9 @@ import React from 'react'
 const QuienesSomos = () => {
     return (
         <div>
-            <a className= "d-flex justify-content-center">
+            <div className= "d-flex justify-content-center p-5">
                 <img src="src\assets\logofonda365.png" alt="Logo" width="250" height="154" className="d-inline-block align-text-top" />
-            </a>
+            </div>
             <div className='quienesSomos'>
                 <p>
                     Distribuidora Fonda365 es una empresa chilena, dedicada a la distribución y comercialización de bebidas alcohólica<br/>
