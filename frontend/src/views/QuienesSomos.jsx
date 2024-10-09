@@ -7,7 +7,7 @@ const QuienesSomos = () => {
                 <img src="src\assets\logofonda365.png" alt="Logo" width="250" height="154" className="d-inline-block align-text-top" />
             </div>
             <div className='quienesSomos'>
-                <p>
+                <p className='p-2'>
                     Distribuidora Fonda365 es una empresa chilena, dedicada a la distribución y comercialización de bebidas alcohólica<br/>
                     y analcolicas en distintos canales de venta. Iniciamos nuestras operaciones hace 9 años como operador exclusivo del canal<br/>
                     noche y fue solo cuestión de tiempo para aperturarnos en los distintos canales de venta. El éxito de La Negra, ha sido,<br/>

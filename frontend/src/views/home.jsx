@@ -12,12 +12,12 @@ const Home = () => {
   return (
     <>
     <Banner/>
-    <div class="galeriahome container-fluid">
-    <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
+    <div className="galeriahome container-fluid">
+    <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
     {
       dataProducto && 
       dataProducto.map((dataProd,index) => (
-        index <= 7 ? <div class="col" key={index} xs={12} md={3}><CardProducto dproducto={dataProd} /></div> : null
+        index <= 7 ? <div className="col" key={index} xs={12} md={3}><CardProducto dproducto={dataProd} /></div> : null
       ))
     }
     </div>
