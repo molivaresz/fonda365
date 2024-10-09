@@ -7,7 +7,7 @@ import Home from './views/home';
 import Fonda365ContextProvider from './context/Fonda365ContextProvider';
 import DetalleProducto from './views/DetalleProducto';
 import Footer from './components/Footer';
-import Contactos from './views/Contactos';
+import Contacto from './views/Contacto';
 import InfoDespacho from './views/InfoDespacho';
 import PreguntasFrecuentes from './views/PreguntasFrecuentes';
 import QuienesSomos from './views/QuienesSomos';
@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/DetalleProducto/:id" element={<DetalleProducto />}/>
-          <Route path="/contactos" element={<Contactos />}/>
+          <Route path="/contacto" element={<Contacto />}/>
           <Route path="/informacionDespacho" element={<InfoDespacho />}/>
           <Route path="/preguntasFrecuentes" element={<PreguntasFrecuentes />}/>
           <Route path="/quienesSomos" element={<QuienesSomos />}/>

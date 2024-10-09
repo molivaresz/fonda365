@@ -1,5 +1,6 @@
 import React from 'react'
 import { useContext } from 'react';
+import { Link } from "react-router-dom";
 import { Fonda365Context } from '../context/Fonda365ContextProvider';
 
 const Nbmenu = () => {
@@ -10,9 +11,9 @@ const Nbmenu = () => {
         <div>
             <nav className="navbar">
                 <div className="container-fluid d-flex justify-content-around">
-                    <a className="navbar-brand" href="#">
+                    <Link className="navbar-brand" to="/">
                         <img src="src\assets\logofonda365.png" alt="Logo" width="200" height="104" className="d-inline-block align-text-top" />
-                    </a>
+                    </Link>
                     <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Producto" aria-label="Search" />
                         <input className="form-control me-2" type="search" placeholder="Comuna" aria-label="Search" />
