@@ -1,7 +1,5 @@
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router';
-import { useContext } from "react";
-import { Fonda365Context } from '../context/Fonda365ContextProvider';
 
 
 const CardProducto = (props) => {
@@ -9,8 +7,8 @@ const CardProducto = (props) => {
     const navigate = useNavigate()
 //    const {agregaPizza_a_carro} = useContext(PizzasContext)
 
-    const hClick = (id) => {
-        navigate(`/DetalleProducto/${id}`)
+    const hClick = (idproducto) => {
+        navigate(`/DetalleProducto/${idproducto}`)
     }
 
     return (
@@ -20,17 +18,14 @@ const CardProducto = (props) => {
             <Card.Body key={"cb" + props.dproducto.id_producto}>
                 <Card.Title className='border-bottom border-secondary' key={"ct" + props.dproducto.id_producto}>{props.dproducto.nombre_producto}</Card.Title>
                 <div className='text-center'>
-                    <h3>${props.dproducto.precio}</h3>
+                    <h4>Precio: ${props.dproducto.precio}</h4>
                 </div>
-                {/* <div className='border-bottom border-secondary' key={"ctxt" + props.dproducto.id_producto}>
-                    <b>ingredientes:</b>
-                    <ul className='estilo_ul'>
-                    {props.dpizzas.ingredients.map((ingrediente,index) => (
-                        <li key={index}>🍕 {ingrediente}</li> 
-                    ))}
-                    </ul>
-                </div> */}
-                <div className='text-center'>
+                <div className='border-bottom border-secondary' key={"ctxt" + props.dproducto.id_producto}>
+                    <p>Ciudad: {props.dproducto.ciudad}</p>
+                    <p>Comuna: {props.dproducto.comuna}</p>
+                    <p>Local: {props.dproducto.local}</p>
+                </div>
+                <div className='text-center pt-2'>
                     <button type="button" onClick={() => hClick(props.dproducto.id_producto)} className="btn btn-info me-1">Ver Detalle 👀</button>
                 </div>
             </Card.Body>

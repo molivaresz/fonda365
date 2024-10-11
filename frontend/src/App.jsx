@@ -23,7 +23,7 @@ function App() {
         <Nbmenu />
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/DetalleProducto/:id" element={<DetalleProducto />}/>
+          <Route path="/DetalleProducto/:idproducto" element={<DetalleProducto />}/>
           <Route path="/contacto" element={<Contacto />}/>
           <Route path="/informacionDespacho" element={<InfoDespacho />}/>
           <Route path="/preguntasFrecuentes" element={<PreguntasFrecuentes />}/>

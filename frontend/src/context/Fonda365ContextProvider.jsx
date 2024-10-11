@@ -22,6 +22,14 @@ const Fonda365ContextProvider = ({ children }) => {
         }
     };
 
+    const getDetalleProducto = async (idproducto) => {
+        try {
+            console.log("Producto: " + idproducto)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const getCategorias = async () => {
         try {
             const response = await fetch(CATEGORIA_URL);
@@ -41,7 +49,7 @@ const Fonda365ContextProvider = ({ children }) => {
     }, [])
 
     return (
-        <Fonda365Context.Provider value={{dataProducto, setDataProducto, dataCategoria, setDataCategoria}}>
+        <Fonda365Context.Provider value={{dataProducto, setDataProducto, dataCategoria, setDataCategoria, getDetalleProducto}}>
             {children}
         </Fonda365Context.Provider>
     );
