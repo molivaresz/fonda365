@@ -1,9 +1,10 @@
 import { createContext, useEffect, useState} from "react";
+import axios from "axios";
 
 export const Fonda365Context = createContext();
 
-const PRODUCTOS_URL = "/productos.json";
-const CATEGORIA_URL = "/categoria.json";
+//const PRODUCTOS_URL = "/productos.json";
+const FONDA365API_URL = "http://localhost:3000";
 
 const Fonda365ContextProvider = ({ children }) => {
     const [dataProducto, setDataProducto] = useState([])
@@ -13,10 +14,9 @@ const Fonda365ContextProvider = ({ children }) => {
 
     const getProductos = async () => {
         try {
-            const response = await fetch(PRODUCTOS_URL);
-            const dataProductos = await response.json();
-
-            setDataProducto(dataProductos)
+            axios.get(FONDA365API_URL + "/productos").then((response) => {
+                setDataProducto(response.data);    
+            });
         } catch (error) {
             console.log(error);
         }
@@ -32,10 +32,9 @@ const Fonda365ContextProvider = ({ children }) => {
 
     const getCategorias = async () => {
         try {
-            const response = await fetch(CATEGORIA_URL);
-            const dataCategorias = await response.json();
-
-            setDataCategoria(dataCategorias)
+            axios.get(FONDA365API_URL + "/categorias").then((response) => {
+                setDataCategoria(response.data);    
+            });
         } catch (error) {
             console.log(error);
         }

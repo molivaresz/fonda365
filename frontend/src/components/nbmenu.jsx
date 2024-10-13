@@ -28,7 +28,7 @@ const Nbmenu = () => {
                         {
                             dataCategoria  &&
                             dataCategoria.map((dataCatego,index) => (
-                                <button key={index} type="button" className="btn btn-outline-dark"><b>{dataCatego.categoria}</b></button>
+                                <button key={index} type="button" className="btn btn-outline-dark"><b>{dataCatego.Categoria}</b></button>
                             ))
                         }
                     </div>

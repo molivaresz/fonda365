@@ -16,11 +16,11 @@ const Banner = () => {
                         dataProducto.map((dataProd,index) => (
                             index == 0 ? (
                                 <div key={index} className="carousel-item active">
-                                    <img key={index} src={dataProd.img} className="d-block w-100" alt="..." />
+                                    <img key={index} src={dataProd.Imagen} className="d-block w-100" alt="..." />
                                 </div>
                             )
                             :   <div key={index} className="carousel-item">
-                                    <img key={index} src={dataProd.img} className="d-block w-100" alt="..." />
+                                    <img key={index} src={dataProd.Imagen} className="d-block w-100" alt="..." />
                                 </div>
                         ))
                     }

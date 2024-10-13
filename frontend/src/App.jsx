@@ -2,8 +2,8 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from "react-router-dom";
 import { useState } from 'react';
-import Nbmenu from './components/nbmenu';
 import Home from './views/home';
+import Nbmenu from './components/Nbmenu';
 import Fonda365ContextProvider from './context/Fonda365ContextProvider';
 import DetalleProducto from './views/DetalleProducto';
 import Footer from './components/Footer';
