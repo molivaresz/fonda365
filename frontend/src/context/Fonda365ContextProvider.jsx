@@ -9,7 +9,7 @@ const FONDA365API_URL = "http://localhost:3000";
 const Fonda365ContextProvider = ({ children }) => {
     const [dataProducto, setDataProducto] = useState([])
     const [dataCategoria, setDataCategoria] = useState([])
-//    const [carro, setCarro] = useState([])
+    const [dataComentarios, setDataComentarios] = useState([])
     
 
     const getProductos = async () => {
@@ -17,14 +17,6 @@ const Fonda365ContextProvider = ({ children }) => {
             axios.get(FONDA365API_URL + "/productos").then((response) => {
                 setDataProducto(response.data);    
             });
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const getDetalleProducto = async (idproducto) => {
-        try {
-            console.log("Producto: " + idproducto)
         } catch (error) {
             console.log(error);
         }
@@ -40,7 +32,17 @@ const Fonda365ContextProvider = ({ children }) => {
         }
     };
 
-
+    const getComentariosxProducto = async (idproducto) => {
+        try {
+            axios
+            .post(FONDA365API_URL + "/comentariosxproducto", {"idproducto": idproducto})
+            .then((response) => {
+                setDataComentarios(response.data);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
         getProductos()
@@ -48,7 +50,7 @@ const Fonda365ContextProvider = ({ children }) => {
     }, [])
 
     return (
-        <Fonda365Context.Provider value={{dataProducto, setDataProducto, dataCategoria, setDataCategoria, getDetalleProducto}}>
+        <Fonda365Context.Provider value={{dataProducto, setDataProducto, dataCategoria, setDataCategoria, getComentariosxProducto}}>
             {children}
         </Fonda365Context.Provider>
     );

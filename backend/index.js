@@ -4,7 +4,7 @@ require('dotenv').config()
 const cors = require('cors')
 
 
-const { getCategorias, getProductos } = require('./consultas')
+const { getCategorias, getProductos, comentarios_x_producto } = require('./consultas')
 
 app.listen(process.env.PORT, console.log(`SERVIDOR ENCENDIDO EN PUERTO ${process.env.PORT}`))
 app.use(express.json())
@@ -23,6 +23,16 @@ app.get("/productos", async (req, res) => {
     try {
         const producto = await getProductos()
         res.json(producto)
+    } catch (error) {
+        res.status(error.code || 500).send(error)
+    }
+})
+
+app.post("/comentariosxproducto", async (req, res) => {
+    try {
+        const payload = req.body
+        const comentproducto = await comentarios_x_producto(payload)
+        res.json(comentproducto)
     } catch (error) {
         res.status(error.code || 500).send(error)
     }

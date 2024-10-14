@@ -13,7 +13,7 @@ const Footer = () => {
 
             <div className="col mb-1">
                 <h5>Donde Fonda365</h5>
-                <ul class="nav flex-column">
+                <ul className="nav flex-column">
                     <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/">Inicio</Link></li>
                     <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/quienesSomos">Quienes Somos</Link></li>
                     <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-muted">Mi Cuenta</a></li>
@@ -21,9 +21,9 @@ const Footer = () => {
                 </ul>
             </div>
 
-            <div class="col mb-1">
+            <div className="col mb-1">
                 <h5>Servicio al Cliente</h5>
-                <ul class="nav flex-column">
+                <ul className="nav flex-column">
                     <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/terminosCondiciones">Terminos y Condiciones</Link></li>
                     <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/preguntasFrecuentes">Preguntas Frecuentes</Link></li>
                     <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/informacionDespacho">Información Despachos</Link></li>
