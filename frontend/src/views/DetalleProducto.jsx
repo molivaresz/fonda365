@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 
 const DetalleProducto = () => {
 
-  const {dataProducto, getComentariosxProducto} = useContext(Fonda365Context)
+  const {dataProducto, getComentariosxProducto, dataComentarios} = useContext(Fonda365Context)
   const { idproducto } = useParams()
 
   useEffect(() => {
@@ -39,9 +39,34 @@ const DetalleProducto = () => {
       )
     }
   })
-
-
   }
+
+  <h3>Comentarios:</h3>
+  <div className="accordion" id="accordionExample">
+  {
+
+  dataComentarios && 
+  dataComentarios.map((datacoment,index) => {
+    return (
+      <div key={"ai" + {index}} className="accordion-item">
+      <h2 key={"ah" + {index}} className="accordion-header" id="headingOne">
+        <button key={"b" + {index}} className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          {datacoment.Correo}
+        </button>
+      </h2>
+      <div key={"ac" + {index}} id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div key={"ab" + {index}} className="accordion-body">
+          {datacoment.Comentario}
+        </div>
+      </div>
+    </div>
+  
+    )
+  })
+  }
+
+  </div>
+
   </>
   )
 }

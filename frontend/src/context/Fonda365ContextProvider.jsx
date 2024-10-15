@@ -34,6 +34,7 @@ const Fonda365ContextProvider = ({ children }) => {
 
     const getComentariosxProducto = async (idproducto) => {
         try {
+            setDataComentarios([])
             axios
             .post(FONDA365API_URL + "/comentariosxproducto", {"idproducto": idproducto})
             .then((response) => {
@@ -50,7 +51,7 @@ const Fonda365ContextProvider = ({ children }) => {
     }, [])
 
     return (
-        <Fonda365Context.Provider value={{dataProducto, setDataProducto, dataCategoria, setDataCategoria, getComentariosxProducto}}>
+        <Fonda365Context.Provider value={{dataProducto, setDataProducto, dataCategoria, setDataCategoria, getComentariosxProducto, dataComentarios, setDataComentarios}}>
             {children}
         </Fonda365Context.Provider>
     );
