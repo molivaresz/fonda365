@@ -2,10 +2,17 @@ import React from 'react'
 import { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { Fonda365Context } from '../context/Fonda365ContextProvider';
+import { useNavigate } from 'react-router';
 
 const Nbmenu = () => {
 
     const {dataCategoria} = useContext(Fonda365Context)
+    
+    const navigate = useNavigate()
+
+    const hClick = (idcategoria) => {
+        navigate(`/ProductoCategoria/${idcategoria}`)
+    }
 
     return (
         <div>
@@ -28,7 +35,7 @@ const Nbmenu = () => {
                         {
                             dataCategoria  &&
                             dataCategoria.map((dataCatego,index) => (
-                                <button key={index} type="button" className="btn btn-outline-dark"><b>{dataCatego.Categoria}</b></button>
+                                <button key={index} type="button" onClick={() => hClick(dataCatego.Id_Categoria)} className="btn btn-outline-dark"><b>{dataCatego.Categoria}</b></button>
                             ))
                         }
                     </div>

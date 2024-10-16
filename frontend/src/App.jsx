@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from "react-router-dom";
 import { useState } from 'react';
 import Home from './views/home';
-import Nbmenu from './components/Nbmenu';
 import Fonda365ContextProvider from './context/Fonda365ContextProvider';
 import DetalleProducto from './views/DetalleProducto';
 import Footer from './components/Footer';
@@ -12,6 +11,8 @@ import InfoDespacho from './views/InfoDespacho';
 import PreguntasFrecuentes from './views/PreguntasFrecuentes';
 import QuienesSomos from './views/QuienesSomos';
 import TerminosCondiciones from './views/TerminosCondiciones';
+import ProductoCategoria from './views/ProductoCategoria';
+import Nbmenu from './components/nbmenu';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/preguntasFrecuentes" element={<PreguntasFrecuentes />}/>
           <Route path="/quienesSomos" element={<QuienesSomos />}/>
           <Route path="/terminosCondiciones" element={<TerminosCondiciones />}/>
+          <Route path="/ProductoCategoria/:idcategoria" element={<ProductoCategoria />}/>
         </Routes>
         <Footer />
       </Fonda365ContextProvider>
