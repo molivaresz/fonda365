@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
+    <>
     <div className="containerfooter">
-        <footer className="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
-            <div className="col mb-3">
+        <footer className="row row-cols-1 row-cols-sm-2 row-cols-md-5 border-top">
+            <div className="col my-5">
                 <img src="src\assets\logofonda365.png" alt="Logo" width="200" height="104" className="d-inline-block align-text-top" />
             </div>
 
-            <div className="col mb-3"></div>
+            <div className="col my-5"></div>
 
-            <div className="col mb-1">
+            <div className="col my-5">
                 <h5>Donde Fonda365</h5>
                 <ul className="nav flex-column">
                     <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/">Inicio</Link></li>
@@ -20,8 +21,7 @@ const Footer = () => {
                     <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/contacto">Contacto</Link></li>
                 </ul>
             </div>
-
-            <div className="col mb-1">
+        <div className="col my-5">
                 <h5>Servicio al Cliente</h5>
                 <ul className="nav flex-column">
                     <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/terminosCondiciones">Terminos y Condiciones</Link></li>
@@ -29,8 +29,7 @@ const Footer = () => {
                     <li className="nav-item mb-2"><Link className="nav-link p-0 text-muted" to="/informacionDespacho">Información Despachos</Link></li>
                 </ul>
             </div>
-
-            <div className="col mb-1">
+        <div className="col my-5">
                 <h5>Contacto</h5>
                 <ul className="nav flex-column">
                     <li className="nav-item mb-2">+56 9 9999 9999</li>
@@ -41,8 +40,9 @@ const Footer = () => {
         <div className="d-flex flex-column flex-sm-row justify-content-between border-top">
                 <p className='px-2'>Copyright &copy; 2024</p>
                 <p className='px-2'>Desarrollado por ROLMAX</p>
-            </div>
+        </div>
     </div>
+    </>    
     )
 }
 

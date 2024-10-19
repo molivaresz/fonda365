@@ -1,5 +1,6 @@
 const { Pool } = require('pg')
 require('dotenv').config()
+const bcrypt = require('bcryptjs')
 
 const pool = new Pool({
     host: process.env.HOST,
@@ -9,6 +10,7 @@ const pool = new Pool({
     allowExitOnIdle: true
 })
 
+//PRODUCTOS
 const getCategorias = async () => {
     const { rows: categorias } = await pool.query("SELECT * FROM categoria")
     return categorias
@@ -34,5 +36,18 @@ const comentarios_x_producto = async (payload) => {
 
     return result.rows
 }
+
+//USUARIOS
+const registraUsuario = async (payload) => {
+    let { nombre, apellido, correo, password, ciudad, comuna, fechanacimiento } = payload
+    const passwordEncriptada = bcrypt.hashSync(password);
+    password = passwordEncriptada
+    const values = [nombre, apellido, correo, ciudad, comuna, fechanacimiento, 2, password, true]
+    const consulta = "INSERT INTO Usuario VALUES ($1, $2, $3, $4)"
+    await pool.query(consulta, values)
+}
+
+
+
 
 module.exports = { getCategorias, getProductos, comentarios_x_producto }

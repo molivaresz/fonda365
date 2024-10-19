@@ -4,14 +4,33 @@
     box-sizing: border-box;
 }
 
+html, body { overflow-x: hidden; }
+
 .navbar {
     background: #b99c9c;
-    padding: 20px;
+}
+
+.containerfooter {
+    background: #b99c9c;
 }
 
 .icono_perfil {
     width: 35px;
     height: 35px;
+}
+
+#InputEmail {
+    width: 20em;
+}
+
+#formGroupInputNombre, 
+#formGroupInputApellido, 
+#formGroupInputEmail, 
+#formGroupInputPassword, 
+#formGroupInputCiudad, 
+#formGroupSelectComuna, 
+#formGroupInputFechaNac {
+    width: 20em;
 }
 
 .carousel {
@@ -30,8 +49,4 @@
 }
 .quienesSomos {
     text-align: center;
-}
-footer {
-    background: #b99c9c;
-    padding: 20px;
 }

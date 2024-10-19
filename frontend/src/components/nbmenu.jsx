@@ -26,12 +26,20 @@ const Nbmenu = () => {
                         <input className="form-control me-2" type="search" placeholder="Comuna" aria-label="Search" />
                         <input className="form-control me-2" type="search" placeholder="Local" aria-label="Search" />
                         <button className="btn btn-success" type="submit">Buscar</button>
-                    </form>                    
-                    <a className="icono_perfil d-flex align-items-center"><img src="src\assets\person.svg"></img></a>
+                    </form>
+                    <div className="d-flex flex-column justify-content-end align-items-center">
+                        <Link className="icono_perfil d-flex align-items-center" to="/InicioRegistro"><img src="src\assets\person.svg" /></Link> 
+                        <div className="dropdown">
+                            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Rolando</button>
+                            <ul className="dropdown-menu dropdown-menu-dark">
+                                <li><a className="dropdown-item" href="#">Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
                 </div>
                 <div className="container-fluid d-flex justify-content-center">
                     <div className="btn-group" role="group" aria-label="Default button group">
-
                         {
                             dataCategoria  &&
                             dataCategoria.map((dataCatego,index) => (

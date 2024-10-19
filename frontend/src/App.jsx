@@ -13,6 +13,7 @@ import QuienesSomos from './views/QuienesSomos';
 import TerminosCondiciones from './views/TerminosCondiciones';
 import ProductoCategoria from './views/ProductoCategoria';
 import Nbmenu from './components/nbmenu';
+import InicioRegistro from './views/InicioRegistro';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Nbmenu />
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/InicioRegistro" element={<InicioRegistro />}/>
           <Route path="/DetalleProducto/:idproducto" element={<DetalleProducto />}/>
           <Route path="/contacto" element={<Contacto />}/>
           <Route path="/informacionDespacho" element={<InfoDespacho />}/>
