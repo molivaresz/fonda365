@@ -5,7 +5,7 @@ require('dotenv').config()
 const cors = require('cors')
 
 
-const { getCategorias, getProductos, comentarios_x_producto, getComunas,registraUsuario } = require('./consultas')
+const { getCategorias, getProductos, comentarios_x_producto, getComunas,registraUsuario, verificarCredenciales } = require('./consultas')
 
 app.listen(process.env.PORT, console.log(`SERVIDOR ENCENDIDO EN PUERTO ${process.env.PORT}`))
 app.use(express.json())
@@ -61,6 +61,32 @@ app.post("/usuarios", async (req, res) => {
         res.status(error.code || 500).send(error)
     }
 })
+
+app.post("/login", async (req, res) => {
+    try {
+        const { correo, password } = req.body
+        await verificarCredenciales(correo, password)
+        const token = jwt.sign({ correo }, process.env.SECRET_KEY)
+        res.send({token})
+    } catch (error) {
+        console.log("error.code: " + error.code)
+        res.status(error.code || 500).send(error)
+    }
+})
+
+app.get("/usuarios", async (req, res) => {
+    try {
+        const token = req.header("Authorization").split("Bearer ")[1]  
+        //jwt.verify(token, process.env.SECRET_KEY)
+        const { correo } = jwt.decode(token)
+        const usuario = await obtenerUsuarios(correo)
+        res.json([usuario])        
+    } catch (error) {
+        res.status(error.code || 500).send(error)
+    }
+})
+
+
 
 app.get("*", (req, res) => {
     res.status(404).send("Esta ruta no existe")
