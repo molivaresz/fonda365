@@ -71,19 +71,23 @@ const registraUsuario = async (payload) => {
 
 const verificarCredenciales = async (correo, password) => {
     const values = [correo]
-    const consulta = 'SELECT * FROM usuario WHERE "Correo" = $1'
+    const consulta = 'SELECT * FROM usuario WHERE "Activo" = true and "Correo" = $1'
     const { rows: [usuario], rowCount } = await pool.query(consulta, values)
-    const { Password: passwordEncriptada } = usuario
-    const passwordEsCorrecta = bcrypt.compareSync(password, passwordEncriptada)
-    if (!passwordEsCorrecta || !rowCount)
-    throw { code: 401, message: "Correo/contraseña incorrecta" }
+    if (rowCount === 0) {
+        throw { code: 401, message: "Correo incorrecto" }
+    } else {
+        const { Password: passwordEncriptada } = usuario
+        const passwordEsCorrecta = bcrypt.compareSync(password, passwordEncriptada)
+        if (!passwordEsCorrecta) 
+        throw { code: 401, message: "contraseña incorrecta" }
+    }
 }
 
 const obtenerUsuarios = async (correo) => {
     const values = [correo]
-    const consulta = "SELECT id, email, rol, lenguage FROM usuario WHERE email = $1"
+    const consulta = 'SELECT "Nombre", "Apellido","Ciudad", "Id_Comuna", "Imagen_Perfil", "Id_Perfil" FROM usuario WHERE "Activo" = true and "Correo" = $1'
     const {rows: [usuario], rowCount } = await pool.query(consulta, values)
-    if (!rowCount) throw { code: 404, message: "No existe registro usuario con el email ingresado" }
+    if (rowCount === 0) throw { code: 404, message: "No existe registro usuario con el email ingresado" }
 
     return usuario
 }

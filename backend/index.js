@@ -6,6 +6,7 @@ const cors = require('cors')
 
 
 const { getCategorias, getProductos, comentarios_x_producto, getComunas,registraUsuario, verificarCredenciales } = require('./consultas')
+const { verificacionToken } = require('./middleware')
 
 app.listen(process.env.PORT, console.log(`SERVIDOR ENCENDIDO EN PUERTO ${process.env.PORT}`))
 app.use(express.json())
@@ -50,7 +51,7 @@ app.get("/comunas", async (req, res) => {
 })
 
 //USUARIOS
-app.post("/usuarios", async (req, res) => {
+app.post("/registraUsuarios", async (req, res) => {
     try {
         const payload = req.body
         const usuarioregistrado = await registraUsuario(payload)
@@ -74,10 +75,9 @@ app.post("/login", async (req, res) => {
     }
 })
 
-app.get("/usuarios", async (req, res) => {
+app.get("/usuarios", verificacionToken, async (req, res) => {
     try {
-        const token = req.header("Authorization").split("Bearer ")[1]  
-        //jwt.verify(token, process.env.SECRET_KEY)
+        const token = req.header("Authorization").split("Bearer ")[1] 
         const { correo } = jwt.decode(token)
         const usuario = await obtenerUsuarios(correo)
         res.json([usuario])        

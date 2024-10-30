@@ -61,7 +61,7 @@ const Fonda365ContextProvider = ({ children }) => {
     const crearUsuario = async (nombre,apellido,correo,password,ciudad,comuna,fechanac) => {
         try {
             axios
-            .post(FONDA365API_URL + "/usuarios", {"nombre": nombre, "apellido": apellido, "correo": correo, "password": password, "ciudad": ciudad, "comuna": comuna, "fechanacimiento":fechanac})
+            .post(FONDA365API_URL + "/registraUsuarios", {"nombre": nombre, "apellido": apellido, "correo": correo, "password": password, "ciudad": ciudad, "comuna": comuna, "fechanacimiento":fechanac})
             .then((response) => {
                 console.log(response.data);
             });
