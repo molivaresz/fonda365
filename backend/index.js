@@ -5,7 +5,7 @@ require('dotenv').config()
 const cors = require('cors')
 
 
-const { getCategorias, getProductos, comentarios_x_producto, getComunas,registraUsuario, verificarCredenciales } = require('./consultas')
+const { getCategorias, getProductos, comentarios_x_producto, getComunas,registraUsuario, verificarCredenciales, obtenerUsuarios } = require('./consultas')
 const { verificacionToken } = require('./middleware')
 
 app.listen(process.env.PORT, console.log(`SERVIDOR ENCENDIDO EN PUERTO ${process.env.PORT}`))
@@ -68,7 +68,7 @@ app.post("/login", async (req, res) => {
         const { correo, password } = req.body
         await verificarCredenciales(correo, password)
         const token = jwt.sign({ correo }, process.env.SECRET_KEY)
-        res.send({token})
+        res.send(token)
     } catch (error) {
         console.log("error.code: " + error.code)
         res.status(error.code || 500).send(error)
@@ -77,11 +77,14 @@ app.post("/login", async (req, res) => {
 
 app.get("/usuarios", verificacionToken, async (req, res) => {
     try {
-        const token = req.header("Authorization").split("Bearer ")[1] 
+        console.log("paso por aqui")
+        const token = req.header("Authorization").split("Bearer ")[1]
+        console.log("token:" + token)
         const { correo } = jwt.decode(token)
         const usuario = await obtenerUsuarios(correo)
         res.json([usuario])        
     } catch (error) {
+        console.log(error.message)
         res.status(error.code || 500).send(error)
     }
 })

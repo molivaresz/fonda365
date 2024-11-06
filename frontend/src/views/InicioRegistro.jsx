@@ -1,6 +1,6 @@
 import React from 'react'
-import InicioSesion from '../components/iniciosesion'
 import RegistroUsuario from '../components/RegistroUsuario'
+import InicioSesion from '../components/InicioSesion'
 
 
 const InicioRegistro = () => {

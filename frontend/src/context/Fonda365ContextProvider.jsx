@@ -70,6 +70,34 @@ const Fonda365ContextProvider = ({ children }) => {
         }
     };
 
+    const iniciarUsuario = async (correo,password) => {
+        let token = ""
+        try {
+            axios
+            .post(FONDA365API_URL + "/login", {"correo": correo, "password": password})
+            .then((response) => {
+                token = response.data;
+                console.log(token)
+            });
+        } catch (error) {
+            console.log(error);
+        }
+
+        try {
+            axios
+            .get(FONDA365API_URL + "/usuarios", {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then((response) => {
+                console.log(response.data)
+            });
+        } catch (error) {
+            console.log(error);
+        }
+
+    }; 
 
     useEffect(() => {
         getProductos()
@@ -78,7 +106,13 @@ const Fonda365ContextProvider = ({ children }) => {
     }, [])
 
     return (
-        <Fonda365Context.Provider value={{dataProducto, setDataProducto, dataCategoria, setDataCategoria, getComentariosxProducto, dataComunas, setDataComunas, dataComentarios, setDataComentarios, crearUsuario}}>
+        <Fonda365Context.Provider value={{dataProducto, setDataProducto, 
+        dataCategoria, setDataCategoria, 
+        getComentariosxProducto, 
+        dataComunas, setDataComunas, 
+        dataComentarios, setDataComentarios, 
+        crearUsuario, 
+        iniciarUsuario}}>
             {children}
         </Fonda365Context.Provider>
     );

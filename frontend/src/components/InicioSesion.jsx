@@ -1,6 +1,11 @@
 import React from 'react'
+import { useContext } from 'react';
+import { Fonda365Context } from '../context/Fonda365ContextProvider';
 
 const InicioSesion = () => {
+
+    const {iniciarUsuario} = useContext(Fonda365Context)
+
     return (
         <div className='container-fluid d-flex pt-5 ps-5'>
             <form>
@@ -12,7 +17,8 @@ const InicioSesion = () => {
                     <label className="form-label">Contraseña</label>
                     <input type="password" className="form-control" id="InputPassword" />
                 </div>
-                <button type="button" className="btn btn-secondary">Ingresar</button>
+                <button type="button" onClick={() => iniciarUsuario(document.getElementById("InputEmail").value,
+                document.getElementById("InputPassword").value)} className="btn btn-secondary">Ingresar</button>
             </form>
         </div>
     )
