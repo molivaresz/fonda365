@@ -6,11 +6,12 @@ const cors = require('cors')
 
 
 const { getCategorias, getProductos, comentarios_x_producto, getComunas,registraUsuario, verificarCredenciales, obtenerUsuarios } = require('./consultas')
-const { verificacionToken } = require('./middleware')
+const { validaExistenciaCredenciales, verificacionToken, logger } = require('./middleware')
 
 app.listen(process.env.PORT, console.log(`SERVIDOR ENCENDIDO EN PUERTO ${process.env.PORT}`))
 app.use(express.json())
 app.use(cors())
+app.use(logger)
 
 //PRODUCTOS
 app.get("/categorias", async (req, res) => {
@@ -63,23 +64,20 @@ app.post("/registraUsuarios", async (req, res) => {
     }
 })
 
-app.post("/login", async (req, res) => {
+app.post("/login", validaExistenciaCredenciales, async (req, res) => {
     try {
         const { correo, password } = req.body
         await verificarCredenciales(correo, password)
         const token = jwt.sign({ correo }, process.env.SECRET_KEY)
         res.send(token)
     } catch (error) {
-        console.log("error.code: " + error.code)
         res.status(error.code || 500).send(error)
     }
 })
 
 app.get("/usuarios", verificacionToken, async (req, res) => {
     try {
-        console.log("paso por aqui")
         const token = req.header("Authorization").split("Bearer ")[1]
-        console.log("token:" + token)
         const { correo } = jwt.decode(token)
         const usuario = await obtenerUsuarios(correo)
         res.json([usuario])        
@@ -88,8 +86,6 @@ app.get("/usuarios", verificacionToken, async (req, res) => {
         res.status(error.code || 500).send(error)
     }
 })
-
-
 
 app.get("*", (req, res) => {
     res.status(404).send("Esta ruta no existe")

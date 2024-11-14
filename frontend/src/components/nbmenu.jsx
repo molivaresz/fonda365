@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 
 const Nbmenu = () => {
 
-    const {dataCategoria} = useContext(Fonda365Context)
+    const {dataCategoria, dataSesion} = useContext(Fonda365Context)
     
     const navigate = useNavigate()
 
@@ -15,6 +15,7 @@ const Nbmenu = () => {
     }
 
     return (
+    <>
         <div>
             <nav className="navbar">
                 <div className="container-fluid d-flex justify-content-around">
@@ -30,7 +31,12 @@ const Nbmenu = () => {
                     <div className="d-flex flex-column justify-content-end align-items-center">
                         <Link className="icono_perfil d-flex align-items-center" to="/InicioRegistro"><img src="src\assets\person.svg" /></Link> 
                         <div className="dropdown">
-                            <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Rolando</button>
+                        {    
+                            dataSesion &&
+                            dataSesion.map((dataSesionUsuario,index) => (
+                                <button key={index} className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{dataSesionUsuario.Nombre} {dataSesionUsuario.Apellido}</button>
+                            ))
+                        }                                
                             <ul className="dropdown-menu dropdown-menu-dark">
                                 <li><a className="dropdown-item" href="#">Cerrar Sesión</a></li>
                             </ul>
@@ -50,6 +56,7 @@ const Nbmenu = () => {
                 </div>
             </nav>
         </div>
+    </>
     )
 }
 

@@ -1,5 +1,13 @@
 const jwt = require("jsonwebtoken");
 
+const validaExistenciaCredenciales = (req, res, next) => {
+    const { correo, password } = req.body
+    if (correo == "" || password == "") {
+        return res.status(401).send({ code: "401", message: "No se obtuvieron email/password de la consulta" })
+    }
+    next()
+}
+
 const verificacionToken = (req, res, next) => {
     const autorization = req.header("Authorization")
     if (!autorization) {
@@ -15,5 +23,13 @@ const verificacionToken = (req, res, next) => {
     }
 }
 
+const logger = (req, res, next) => {
+    const d = new Date()
+    const logEntry = `${d.toLocaleDateString()} ${d.toLocaleTimeString()} - ${req.method} ${req.originalUrl}\n`;
 
-module.exports = { verificacionToken }
+    console.log(logEntry)
+    
+    next();
+}
+
+module.exports = { validaExistenciaCredenciales, verificacionToken, logger }
