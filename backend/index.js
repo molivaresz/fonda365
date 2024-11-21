@@ -11,7 +11,7 @@ const { validaExistenciaCredenciales, verificacionToken, logger } = require('./m
 app.listen(process.env.PORT, console.log(`SERVIDOR ENCENDIDO EN PUERTO ${process.env.PORT}`))
 app.use(express.json())
 app.use(cors())
-app.use(logger)
+
 
 //PRODUCTOS
 app.get("/categorias", async (req, res) => {
@@ -45,7 +45,7 @@ app.post("/comentariosxproducto", async (req, res) => {
 app.get("/comunas", async (req, res) => {
     try {
         const comunas = await getComunas()
-        res.json(comunas)
+        res.status(200).json(comunas)
     } catch (error) {
         res.status(error.code || 500).send(error)
     }
@@ -90,3 +90,5 @@ app.get("/usuarios", verificacionToken, async (req, res) => {
 app.get("*", (req, res) => {
     res.status(404).send("Esta ruta no existe")
 })
+
+module.exports = app;
